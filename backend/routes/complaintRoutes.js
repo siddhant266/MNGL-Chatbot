@@ -1,6 +1,7 @@
 import express from "express";
 import * as complaintController from "../controllers/complaintController.js";
-import { authMiddleware as protect, isAdmin as authorize } from "../middleware/authMiddleware.js";
+import { protect, authorize } from "../middleware/authMiddleware.js";
+
 
 const router = express.Router();
 
@@ -11,13 +12,13 @@ router.post('/create', complaintController.createComplaint);
 router.use(protect);
 
 // Get all complaints with filters
-router.get('/', complaintController.getAllComplaints);
+router.get('/', authorize('admin', 'manager'), complaintController.getAllComplaints);
 
 // Get single complaint
-router.get('/:id', complaintController.getComplaintById);
+router.get('/:id', authorize('admin', 'manager'), complaintController.getComplaintById);
 
 // Update complaint
-router.put('/:id', complaintController.updateComplaint);
+router.put('/:id', authorize('admin', 'manager'), complaintController.updateComplaint);
 
 // Delete complaint (admin only)
 router.delete('/:id', authorize('admin', 'manager'), complaintController.deleteComplaint);

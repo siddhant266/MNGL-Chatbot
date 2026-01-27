@@ -1,0 +1,1 @@
+import { protect, authorize } from "../middleware/authMiddleware.js";

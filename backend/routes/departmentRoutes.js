@@ -1,6 +1,7 @@
 import express from "express";
 import * as departmentController from "../controllers/departmentController.js";
-import { authMiddleware as protect, isAdmin as authorize } from "../middleware/authMiddleware.js";
+import { protect, authorize } from "../middleware/authMiddleware.js";
+
 
 const router = express.Router();
 

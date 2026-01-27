@@ -1,5 +1,5 @@
 import Complaint from "../models/Complaint.js";
-import User from "../models/User.js";
+import User from "../models/user.js";
 import Department from "../models/Department.js";
 import asyncHandler from "../middleware/asyncHandler.js";
 
